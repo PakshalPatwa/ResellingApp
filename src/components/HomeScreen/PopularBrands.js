@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     //  fontWeight: '700',
     color: '#1F3D4D',
-    fontFamily:'Poppins-Regular'
+    fontFamily:'Poppins-Bold'
   },
   swiper: {
     borderRadius: 10,
