@@ -1,0 +1,48 @@
+export default {
+    Forgot_password: require('../../assets/Forgot_password.png'),
+    Logo1: require('../../assets/Logo1.png'),
+    Logo: require('../../assets/Logo.png'),
+    notifications:require('../../assets/notifications.png'),
+    Banner: require('../../assets/Banner.png'),
+    amazon: require('../../assets/amazon-color.png'),
+    dailymotion: require('../../assets/dailymotion-color.png'),
+    Expires: require('../../assets/Expires.png'),
+    News: require('../../assets/News.png'),
+    Analytics: require('../../assets/Analytics.png'),
+    Coupons: require('../../assets/Coupons.png'),
+    Christmas: require('../../assets/Christmas.png'),
+    Guardians: require('../../assets/Guardians.png'),
+    Brand: require('../../assets/Brand.png'),
+    nonotification:require('../../assets/no-notification.png'),
+    backarrow: require('../../assets/back_arrow.png'),
+    Profile :require('../../assets/Profile.png'),
+    Rightside:require('../../assets/Rightside_arrow.png'),
+    share:require('../../assets/share.png'),
+
+    // News bottompage
+    News1: require('../../assets/News1.png'),
+    News2: require('../../assets/News2.png'),
+    News3: require('../../assets/News3.png'),
+    News4: require('../../assets/News4.png'),
+    News5: require('../../assets/News5.png'),
+    News6: require('../../assets/News6.png'),
+    Offers:require('../../assets/Offers.png'),
+    Newsletter1: require('../../assets/Newsletter1.png'),
+    
+    // Popular Brands & Popular Stores
+    Brand1:require('../../assets/Brand1.png'),
+    Brand2:require('../../assets/Brand2.png'),
+    Brand3:require('../../assets/Brand3.png'),
+    Brand4:require('../../assets/Brand4.png'),
+
+    // Brands images 
+    Brands1:require('../../assets/Brands1.png'),
+    Brands2:require('../../assets/Brands2.png'),
+    Brands3:require('../../assets/Brands3.png'),
+    Brands4:require('../../assets/Brands4.png'),
+    Brands5:require('../../assets/Brands5.png'),
+    Brands6:require('../../assets/Brands6.png'),
+    Brands7:require('../../assets/Brands7.png'),
+    Brands8:require('../../assets/Brands8.png'),
+    Brands9:require('../../assets/Brands9.png'),
+};

@@ -1,131 +1,53 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './src/components/Home/BottomTabNavigtion';
+import SplashScreen from './src/components/SplashScreen';
+import Login from './src/components/Login';
+import SignUp from './src/components/SignUp';
+import Notifications from './src/components/Notifications';
+import Newsletter from './src/components/NewsScreen/Newsletter';
+import ForgotPassword from './src/components/ForgotPassword';
+// import BottomTabNavigation from './src/components/Home/BottomTabNavigtion';
+import ManagePayment from './src/components/SettingsScreen/Tabs/ManagePayment';
+import InviteFriends from './src/components/SettingsScreen/Tabs/InviteFriends';
+import PrivacyPolicy from './src/components/SettingsScreen/Tabs/PrivacyPolicy';
+import AboutUs from './src/components/SettingsScreen/Tabs/AboutUs';
+import SettingNotifications from './src/components/SettingsScreen/Tabs/SettingNotifications';
+import LanguageSelection from './src/components/SettingsScreen/Tabs/LanguageSelection';
+import SignOut from './src/components/SettingsScreen/Tabs/SignOut';
+import EditProfile from './src/components/SettingsScreen/EditProfile'
+import Claimdetails from './src/components/Claimdetails';
+import BrandScreen from './src/components/OffersScreen/BrandScreen'
+import ShopsScreen from './src/components/OffersScreen/ShopsScreen'
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const Stack = createNativeStackNavigator();
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='BottomTabNavigation' screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        <Stack.Screen name="BottomTabNavigation" component={Home} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Notifications" component={Notifications} />
+        <Stack.Screen name="OfferDetails" component={Claimdetails} />
+        <Stack.Screen name="BrandScreen" component={BrandScreen} />
+        <Stack.Screen name="ShopsScreen" component={ShopsScreen} />
+        <Stack.Screen name="Newsletter" component={Newsletter} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="Manage Payment" component={ManagePayment} />
+        <Stack.Screen name="Invite Friends" component={InviteFriends} />
+        <Stack.Screen name="SettingNotifications" component={SettingNotifications} />
+        <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />
+        <Stack.Screen name="About Us" component={AboutUs} />
+        <Stack.Screen name="Language Selection" component={LanguageSelection} />
+        <Stack.Screen name="Sign Out" component={SignOut} />
+        <Stack.Screen name="EditProfile" component={EditProfile} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the reccomendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
-  const safePadding = '5%';
-
-  return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header/>
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+export default App
