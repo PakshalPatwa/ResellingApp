@@ -52,15 +52,15 @@ const Claimdetails = () => {
                     ))}
                     <View style={styles.inputContainer}>
                         <View style={styles.subinputContainer}>
-                            <Icon name="like1" size={20} color="#000000" style={styles.inputIcon} />
+                            <Icon name="like1" size={16} color="#000000" style={styles.inputIcon} />
                             <Text>109</Text>
                         </View>
                         <View style={styles.subinputContainer}>
-                            <Icon name="dislike1" size={20} color="#000000" style={styles.inputIcon} />
+                            <Icon name="dislike1" size={16} color="#000000" style={styles.inputIcon} />
                             <Text>12</Text>
                         </View>
                         <View style={styles.subinputContainer}>
-                            <Icon2 name="shuttle-space" size={20} color="#000000" style={styles.inputIcon} />
+                            <Icon2 name="shuttle-space" size={16} color="#000000" style={styles.inputIcon} />
                             <Text>207</Text>
                         </View>
                         <View style={styles.subinputContainer}>
@@ -70,7 +70,7 @@ const Claimdetails = () => {
                     </View>
                 </View>
             </View>
-            <GradientButton style={styles.buttonText} title={"Get Coupon"} />
+            <GradientButton title={"Get Coupon"} />
         </ScrollView >
     );
 };
@@ -104,11 +104,12 @@ const styles = StyleSheet.create({
     },
 
     Title: {
-        fontSize: 16,
-        fontWeight: '600',
+        fontSize: 14,
         color: '#FFFFFF',
         marginLeft: 10,
         letterSpacing: 1,
+        fontFamily:'Poppins-SemiBold',
+
     },
 
     headerTitle: {
@@ -142,16 +143,18 @@ const styles = StyleSheet.create({
     },
 
     description: {
+        maxWidth:200,
         fontSize: 16,
         color: "#FFFFFF",
-        fontWeight: '700'
+        // fontWeight: '700',
+        fontFamily:'Poppins-Bold',
     },
 
     subdescription: {
         fontSize: 10,
         color: "#FFFFFF",
-        fontWeight: '400',
         paddingHorizontal: 20,
+        fontFamily:'Poppins-Regular',
     },
 
     tabContainer: {
@@ -164,10 +167,10 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        fontSize: 16,
+        fontSize: 14,
         color: '#1F3D4D',
-        fontWeight: '700',
         paddingHorizontal: 20,
+        fontFamily:'Poppins-Bold',
     },
 
     tabButton: {
@@ -181,15 +184,17 @@ const styles = StyleSheet.create({
     },
 
     Text: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#1F3D4D',
-        fontWeight: '500',
+        // fontWeight: '500',
+        fontFamily:'Poppins-Regular',
     },
 
     tabText: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#1F3D4D',
-        fontWeight: '700',
+        // fontWeight: '700',
+        fontFamily:'Poppins-Bold',
     },
 
     inputContainer: {
@@ -209,8 +214,5 @@ const styles = StyleSheet.create({
     },
     inputIcon: {
         paddingHorizontal: 5,
-    },
-    buttonText: {
-        borderRadius: 'none'
     },
 });

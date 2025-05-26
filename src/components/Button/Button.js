@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 8,
+        // borderRadius: 8,
         marginVertical: 5,
-        backgroundColor: '#1F3D4D',
+        // backgroundColor: '#1F3D4D',
     },
     gradientButton: {
         width: '100%',

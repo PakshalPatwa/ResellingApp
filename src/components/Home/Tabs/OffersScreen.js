@@ -10,11 +10,4 @@ const OffersScreen = () => {
 
 export default OffersScreen;
 
-const styles = StyleSheet.create({
-  header: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-});
+const styles = StyleSheet.create({});

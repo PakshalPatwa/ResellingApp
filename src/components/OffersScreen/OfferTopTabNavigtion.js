@@ -69,7 +69,7 @@ const OfferTopTabNavigation = () => {
 
             <Tab.Navigator
                 screenOptions={{
-                    tabBarLabelStyle: { fontSize: 14, fontWeight: 'bold' },
+                    tabBarLabelStyle: { fontSize: 12, fontFamily:'Poppins-Bold'},
                     tabBarIndicatorStyle: { backgroundColor: 'black' },
                     tabBarStyle: { backgroundColor: '#fff' },
                 }}
@@ -103,8 +103,8 @@ const styles = StyleSheet.create({
     },
     offerText: {
         color: "white",
-        fontSize: 18,
-        fontWeight: '700',
+        fontSize: 14,
+        fontFamily:'Poppins-Bold',
     },
     subheaderContent: {
         flexDirection: 'row',
@@ -128,12 +128,12 @@ const styles = StyleSheet.create({
     activeText: {
         fontSize: 14,
         color: '#1F3D4D',
-        fontWeight: '400',
+        fontFamily:'Poppins-Regular',
     },
     inactiveText: {
         fontSize: 14,
         color: '#7A7A7A',
-        fontWeight: '400',
+        fontFamily:'Poppins-Regular',
     },
     inputIcon: {
         marginTop: 5,

@@ -96,20 +96,21 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 14,
-    fontWeight: '600',
     color: '#1F3D4D',
+    fontFamily:'Poppins-SemiBold',
   },
 
   description: {
-    fontSize: 13,
+    fontSize: 12,
     color: "rgba(31, 61, 77, 0.4)",
-    fontWeight: '500'
+    fontFamily:'Poppins-Regular',
   },
 
   descriptionprice: {
     fontSize: 12,
     color: "#2EBD59",
-    fontWeight: '700'
+    fontWeight: '700',
+    fontFamily:'Poppins-Regular',
   },
 
   expiryRow: {
@@ -123,17 +124,17 @@ const styles = StyleSheet.create({
   },
 
   expires: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 2,
     fontSize: 10,
     color: "#1F3D4D",
     letterSpacing: 1,
+    fontFamily:'Poppins-Regular',
   },
 
   expirestime: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 2,
     fontSize: 10,
-    fontWeight: "700",
+    fontFamily:'Poppins-Bold',
     color: "#E5246A",
   }
-
 });

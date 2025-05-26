@@ -14,7 +14,7 @@ const TrendingOffers = () => {
     return (
         <View style={styles.container}>
  
-            <Text style={styles.Title}>Trending Offers</Text>
+            <Text style={styles.title}>Trending Offers</Text>
  
             <Swiper
                 autoplay
@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         marginBottom: 10,
     },
-    Title: {
+    title: {
         padding: 10,
-        fontSize: 16,
+        fontSize: 14,
         // fontWeight: '700',
         color: '#1F3D4D',
         fontFamily:'Poppins-Bold'

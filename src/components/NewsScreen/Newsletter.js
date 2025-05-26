@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
         tintColor: '#FFFFFF'
     },
     headerTitle: {
-        fontSize: 16,
-        fontWeight: 600,
+        fontSize: 14,
+        fontFamily: 'Poppins-SemiBold',
         color: '#FFFFFF',
         marginLeft: 15,
     },
@@ -91,14 +91,14 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        fontWeight: 600,
         color: '#1F3D4D',
+        fontFamily: 'Poppins-SemiBold',
         letterSpacing: 1
     },
     subtext: {
         fontSize: 14,
         textAlign: 'justify',
-        fontWeight: '400',
+        fontFamily: 'Poppins-Regular',
         color: '#1F3D4D',
         letterSpacing: 1,
         marginBottom: 10
@@ -109,15 +109,15 @@ const styles = StyleSheet.create({
     },
     listItem: {
         fontSize: 14,
-        color: '#555',
-        marginVertical: 2,
+        color: '#1F3D4D',
+        letterSpacing: 1,
+        fontFamily: 'Poppins-Regular',
     },
     subtextlink:{
         fontSize: 14,
-        fontWeight: '600',
         color: '#01AAEC',
+        fontFamily:'Poppins-SemiBold',
         letterSpacing: 1,
         textDecorationLine:'underline',
-        textDecorationStyle:'solid'
     },
 })

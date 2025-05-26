@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     title: {
         padding: 10,
-        fontSize: 16,
+        fontSize: 14,
         // fontWeight: '700',
         color: '#1F3D4D',
         fontFamily:'Poppins-Bold'

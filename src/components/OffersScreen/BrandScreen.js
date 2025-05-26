@@ -93,10 +93,10 @@ const styles = StyleSheet.create({
     tintColor: '#FFFFFF',
   },
   headerTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 14,
     color: '#FFFFFF',
     marginLeft: 15,
+    fontFamily:'Poppins-SemiBold'
   },
   searchIcon: {
     marginRight: 5,
@@ -105,9 +105,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   text: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#1F3D4D',
-    fontWeight: '700',
+    fontFamily:'Poppins-Bold',
     paddingHorizontal: 20,
     marginBottom: 15,
   },

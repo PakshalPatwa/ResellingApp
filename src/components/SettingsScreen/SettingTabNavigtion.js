@@ -13,7 +13,6 @@ import Images from '../Images/Images';
 const SettingTabNavigtion = () => {
   const navigation = useNavigation();
 
-  // **List of tabs for easy navigation**
   const tabs = [
     { name: "Manage Payment", component: ManagePayment },
     { name: "Invite Friends", component: InviteFriends },
@@ -76,6 +75,7 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     width: '100%',
+    height:'100%',
     borderTopStartRadius: 24,
     borderTopEndRadius: 24,
     backgroundColor: '#FFFFFF',
@@ -85,14 +85,14 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderBottomWidth: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between', // Spaced out nicely
+    justifyContent: 'space-between',
     borderBottomColor: '#F2F3FA',
-    paddingHorizontal: 20, // Added horizontal padding for better look
+    paddingHorizontal: 15,
     alignItems: 'center',
   },
   tabText: {
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily:'Poppins-Regular',
     color: '#2C398B',
   },
   Rightside: {
@@ -118,17 +118,17 @@ const styles = StyleSheet.create({
     tintColor: '#FFFFFF'
   },
   Title: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 14,
+    fontFamily: 'Poppins-SemiBold',
     color: '#FFFFFF',
     marginLeft: 10,
     letterSpacing: 1,
   },
   headerTitle: {
     fontSize: 14,
-    fontWeight: '600',
     color: '#FFFFFF',
     letterSpacing: 1,
+    fontFamily: 'Poppins-SemiBold',
     textDecorationLine: 'underline',
   },
   content: {
@@ -143,12 +143,12 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily:'Poppins-Bold',
     color: '#FFFFFF',
   },
   subtext: {
     fontSize: 12,
-    fontWeight: '700',
+    fontFamily:'Poppins-Regular',
     color: '#FFFFFF',
   },
 });

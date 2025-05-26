@@ -98,19 +98,18 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 14,
-    fontWeight: 600,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
     color: '#1F3D4D',
   },
   description: {
     fontSize: 10,
-    fontWeight: 400,
+    fontFamily: 'Poppins-Regular',
     color: '#1F3D4D',
     marginVertical: 4,
   },
   expirestime: {
     fontSize: 10,
-    fontWeight: 400,
+    fontFamily: 'Poppins-Regular',
     color: '#1F3D4D',
     marginTop: 5,
   },

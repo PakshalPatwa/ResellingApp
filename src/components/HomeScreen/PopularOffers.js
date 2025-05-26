@@ -150,18 +150,20 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
 
+    offer: {
+        color: "white",
+        fontSize: 12,
+        // fontWeight: '700',
+        fontFamily:'Poppins-Bold',
+        margin: 10,
+        flexDirection: 'row',
+    },
+    
     inactive: {
         fontSize: 12,
         // fontWeight: '700',
         fontFamily:'Poppins-Bold',
         color: 'rgba(31, 61, 77, 0.6)',
-    },
-
-    Text: {
-        // fontWeight: 700,
-        fontSize: 12,
-        fontFamily:'Poppins-Bold'
-
     },
 
     card: {
@@ -174,14 +176,7 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
 
-    offer: {
-        color: "white",
-        fontSize: 12,
-        // fontWeight: '700',
-        fontFamily:'Poppins-Bold',
-        margin: 10,
-        flexDirection: 'row',
-    },
+   
 
     image: {
         width: 32,
@@ -195,7 +190,7 @@ const styles = StyleSheet.create({
     },
 
     textContainer: {
-        maxWidth: 250,
+        width: '80%',
         height: 52,
     },
 
@@ -207,17 +202,16 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 14,
         color: '#1F3D4D',
-        fontFamily:'Poppins-Bold'
+        fontFamily:'Poppins-SemiBold'
 
     },
     description: {
         fontSize: 10,
+        fontFamily:'Poppins-Regular',
         color: "rgba(31, 61, 77, 0.4)",
-        fontWeight: '400',
-        // letterSpacing: 1,
-        fontFamily:'Poppins-Regular'
     },
     btn: {
+        // height:'50',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
@@ -225,6 +219,7 @@ const styles = StyleSheet.create({
     },
 
     expiryRow: {
+        marginVertical:20,
         marginRight: 80,
         flexDirection: 'row',
     },

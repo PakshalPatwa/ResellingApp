@@ -1,61 +1,135 @@
-import React from 'react'
-import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import { useNavigation } from '@react-navigation/native';
 import GradientButton from './Button/Button';
 import images from "./Images/Images";
 
-const SignUp = () => {
+const SignUp = ({ }) => {
     const navigation = useNavigation();
 
-    const handleLogin = () => {
-        console.log("Sign Up clicked!");
-        navigation.navigate('Login');
+    const [fdata, setFdata] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmpassword: '',
+    });
+
+    const [errormsg, seterrormsg] = useState(null);
+    // const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleInputChange = (name, value) => {
+        setFdata((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+        seterrormsg(null);
+    };
+
+    const handleNavigation = (screen) => {
+        navigation.navigate(screen);
+    };
+
+    const sendToBackend = () => {
+        console.log(fdata)
+        const { name, email, password, confirmpassword } = fdata;
+
+        if (!name || !email || !password || !confirmpassword) {
+            seterrormsg("Please fill all the fields");
+            return;
+        }
+        else {
+            if (fdata.password != fdata.confirmpassword) {
+                seterrormsg("Passwords do not match");
+                return;
+            }
+            else {
+                fetch('http://localhost:3001/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(fdata),
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.error) {
+                            seterrormsg(data.error);
+                        } else {
+                            // Alert.alert('Success', 'Account created successfully');
+                            console.log('Account created successfully')
+                            navigation.navigate('Login');
+                        }
+                    }
+                    )
+                    .catch((error) => {
+                        console.log(error)
+                        // seterrormsg("Something went wrong. Try again.");
+                        // setIsSubmitting(false);
+                    });
+            }
+        }
     };
 
     const handleSkip = () => {
-        console.log("Skip clicked!");
         navigation.navigate('BottomTabNavigation');
-    }
-
-    const Policy = () => {
-        console.log("Policy clicked!");
-        navigation.navigate('Policy');
-    }
+    };
 
     return (
-       <ScrollView>
-         <View style={styles.container}>
-            <TouchableOpacity onPress={() => handleSkip()}>
+        <ScrollView contentContainerStyle={styles.container}>
+            {errormsg && <Text style={{ color: 'red', marginBottom: 10 }}>{errormsg}</Text>}
+
+            <TouchableOpacity>
                 <Image source={images.Logo1} style={styles.image} />
             </TouchableOpacity>
 
-            <View style={styles.inputView}>
-                <Text style={styles.text}>Let’s Get Started!</Text>
-                <Text style={styles.subtext}>Create an account  to get full access</Text>
+            <Text style={styles.text}>Let’s Get Started!</Text>
+            <Text style={styles.subtext}>Create an account to get full access</Text>
+
+            <View style={styles.inputContainer}>
+                <TextInput
+                    placeholder="Full Name"
+                    style={styles.form}
+                    value={fdata.name}
+                    onChangeText={(text) => handleInputChange('name', text)} />
+                <Fontisto name="person" size={20} color="rgba(31, 61, 77, 0.6)" style={styles.inputIcon} />
             </View>
 
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Full Name" style={styles.form} />
-                <Fontisto name="person" size={20} color="#000000" style={styles.inputIcon} />
+                <TextInput
+                    placeholder="Email"
+                    style={styles.form}
+                    value={fdata.email}
+                    keyboardType="email-address"
+                    onChangeText={(text) => handleInputChange('email', text)} />
+                <Icon name="mail" size={20} color="rgba(31, 61, 77, 0.6)" style={styles.inputIcon} />
             </View>
 
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Email" style={styles.form} />
-                <Icon name="mail" size={20} color="#000000" style={styles.inputIcon} />
+                <TextInput
+                    placeholder="Password"
+                    secureTextEntry
+                    style={styles.form}
+                    value={fdata.password}
+                    onChangeText={(text) => handleInputChange('password', text)} />
+                <Icon name="key" size={20} color="rgba(31, 61, 77, 0.6)" style={styles.inputIcon} />
             </View>
 
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Password" secureTextEntry style={styles.form} />
-                <Icon name="key" size={20} color="#000000" style={styles.inputIcon} />
+                <TextInput
+                    placeholder="Confirm Password"
+                    secureTextEntry
+                    style={styles.form}
+                    value={fdata.confirmpassword}
+                    onChangeText={(text) => handleInputChange('confirmpassword', text)} />
+                <Icon name="key" size={20} color="rgba(31, 61, 77, 0.6)" style={styles.inputIcon} />
             </View>
 
-            <View style={styles.inputContainer}>
-                <TextInput placeholder="Confirm Password" secureTextEntry style={styles.form} />
-                <Icon name="key" size={20} color="#000000" style={styles.inputIcon} />
-            </View>
-            <GradientButton title={"Sign Up"} onPress={() => handleLogin()} />
+            <TouchableOpacity style={styles.button}>
+                <GradientButton style={styles.button} title={"SignUp"} onPress={sendToBackend} />
+            </TouchableOpacity>
 
             <View style={styles.dividerContainer}>
                 <View style={styles.divider} />
@@ -75,25 +149,24 @@ const SignUp = () => {
 
             <View style={styles.signupContainer}>
                 <Text style={styles.subtext1}>Already have an account?</Text>
-                <TouchableOpacity onPress={handleLogin}>
-                    <Text style={styles.link}>&nbsp;Sign In</Text>
+                <TouchableOpacity onPress={() => handleNavigation('Login')}>
+                    <Text style={styles.link}> Sign In</Text>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.PolicyContainer}>
                 <Text style={styles.subtext2}>By signing up, you agree to our</Text>
-                <TouchableOpacity onPress={Policy}>
+                <TouchableOpacity onPress={() => handleNavigation('Privacy Policy')}>
                     <Text style={styles.link1}>Terms & Privacy Policy</Text>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.SkipContainer}>
-                <TouchableOpacity onPress={() => handleSkip()}>
+                <TouchableOpacity onPress={handleSkip}>
                     <Text style={styles.Skip}>Skip</Text>
                 </TouchableOpacity>
             </View>
-        </View>
-       </ScrollView>
+        </ScrollView>
     )
 }
 
@@ -101,10 +174,10 @@ export default SignUp
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        paddingVertical: 20,
+        paddingHorizontal: 5,
         backgroundColor: '#fff',
+        alignItems: 'center',
     },
     image: {
         width: 251,
@@ -116,6 +189,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
         textAlign: 'center',
         color: '#1F3D4D',
+        marginBottom: 8,
     },
     subtext: {
         fontWeight: '700',
@@ -127,59 +201,28 @@ const styles = StyleSheet.create({
 
     inputContainer: {
         width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+        marginVertical: 5,
+        justifyContent: 'center',
     },
     form: {
-        width: '100%',
         height: 50,
         fontSize: 14,
         fontWeight: '700',
         borderRadius: 8,
-        margin: 5,
+        paddingHorizontal: 40,
         borderWidth: 1,
-        paddingHorizontal: 10,
         borderColor: '#ccc',
         backgroundColor: '#F2F3FA',
     },
-   
-    inputIcon: {       
-        padding: 15,
+    inputIcon: {
         position: 'absolute',
-        color: "rgba(31, 61, 77, 0.6)"
+        left: 10,
+        top: 15,
     },
-
-    button: {
-        width: 366,
-        height: 48,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 8,
-        marginVertical: 5,
-        backgroundColor: '#1F3D4D',
-    },
-    gradientButton: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 8,
-    },
-
-    buttonLogin: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-        textTransform: "uppercase"
-    },
-
     dividerContainer: {
         width: 366,
         flexDirection: "row",
         alignItems: "center",
-        // marginVertical: 10,
     },
     divider: {
         flex: 1,
@@ -187,30 +230,27 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(31, 61, 77, 0.3)",
         marginHorizontal: 10
     },
+    button: {
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 8,
+        marginVertical: 5,
+        backgroundColor: '#1F3D4D',
+    },
+
     buttonText: {
         color: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
-        marginLeft: 10,
+        // marginLeft: 10,
     },
     appleButton: {
-        width: '100%',
-        height: 50,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 8,
-        marginVertical: 5,
         backgroundColor: '#0A0A0A',
     },
     googleButton: {
-        width: '100%',
-        height: 50,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 8,
-        marginVertical: 5,
         backgroundColor: '#E72819',
     },
     signupContainer: {
@@ -246,13 +286,13 @@ const styles = StyleSheet.create({
         color: '#01AAEC',
     },
     SkipContainer: {
-        width: 350,
+        width: '100%',
         alignItems: 'flex-end',
+        marginTop: 10,
     },
     Skip: {
         fontSize: 14,
         fontWeight: '700',
-        marginVertical: 10,
         textDecorationLine: 'underline',
         color: "rgba(31, 61, 77, 0.8)"
     },

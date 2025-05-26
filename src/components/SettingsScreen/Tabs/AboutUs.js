@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#2C398B',
   },
   logocontainer: {
-    height: 50,
+    width: '100%',
+    height: 60,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
@@ -66,8 +67,8 @@ const styles = StyleSheet.create({
     tintColor: '#FFFFFF',
   },
   Title: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 14,
+    fontFamily: 'Poppins-SemiBold',
     color: '#FFFFFF',
     marginLeft: 10,
     letterSpacing: 1,
@@ -78,10 +79,12 @@ const styles = StyleSheet.create({
   },
   profileheading: {
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Poppins-Bold',
     color: '#FFFFFF',
   },
   tabContainer: {
+    width: '100%',
+    height: '100%',
     borderTopStartRadius: 24,
     borderTopEndRadius: 24,
     backgroundColor: '#FFFFFF',
@@ -90,16 +93,16 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: 'Poppins-SemiBold',
     color: '#1F3D4D',
-    marginBottom: 5,
+    marginVertical: 10,
   },
   subtext: {
     fontSize: 14,
-    fontWeight: '400',
+    fontFamily: 'Poppins-Regular',
     color: '#1F3D4D',
     textAlign: 'justify',
     lineHeight: 22,
-    marginBottom: 15,
+    // marginBottom: 15,
   },
 });

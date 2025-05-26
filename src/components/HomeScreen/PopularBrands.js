@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   image: {
-    width: (width / 3) - 15, // Divide screen width by 3 and subtract padding
+    width: (width / 3) - 15, 
     height: 60,
   },
 });

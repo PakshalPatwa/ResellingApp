@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 14,
-    fontWeight: 'bold',
-    color: '#333',
+    color: '#1F3D4D',
+    fontFamily:'Poppins-SemiBold',
   },
 
   subtextContainer: {
@@ -147,15 +147,15 @@ const styles = StyleSheet.create({
   },
 
   description: {
-    fontSize: 13,
+    fontSize: 12,
     color: "rgba(31, 61, 77, 0.4)",
-    fontWeight: '400'
+    fontFamily:'Poppins-Regular',
   },
 
   descriptionprice: {
     fontSize: 12,
     color: "#2EBD59",
-    fontWeight: '700'
+    fontFamily:'Poppins-Bold',
   },
 
   btn: {
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
 
   expiryRow: {
-    marginRight: 100,
+    marginRight: 50,
     flexDirection: 'row',
   },
 
@@ -180,11 +180,12 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#1F3D4D",
     letterSpacing: 1,
+    fontFamily:'Poppins-Regular',
   },
 
   expirestime: {
     fontSize: 10,
-    fontWeight: "700",
     color: "#E5246A",
+    fontFamily:'Poppins-SemiBold',
   }
 });

@@ -1,15 +1,18 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import images from "../../Images/Images";
 import { useNavigation } from '@react-navigation/native';
+import Images from '../../Images/Images';
 
 const ManagePayment = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.Container}>
-      <View>
-        <Text>Manage Payment</Text>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backWrapper}>
+          <Image source={Images.backarrow} style={styles.backIcon} />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Manage Payment</Text>
       </View>
     </View>
   )
@@ -19,12 +22,24 @@ export default ManagePayment
 
 const styles = StyleSheet.create({
   Container: {
-    justifyContent: 'space-between',
+    flex: 1,
+  },
+  header: {
+    height: 60,
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: 15,
   },
-  Rightside: {
-    width: 20,
+
+  backIcon: {
     height: 20,
+    width: 20,
+  },
+  headerTitle: {
+    fontSize: 14,
+    color: '#2C398B',
+    marginLeft: 15,
+    fontFamily: 'Poppins-SemiBold',
   },
 })

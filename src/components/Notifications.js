@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
         width: 20,
     },
     headerTitle: {
-        fontSize: 18,
-        fontWeight: '600',
+        fontSize: 14,
         color: '#2C398B',
         marginLeft: 15,
+        fontFamily: 'Poppins-SemiBold',
     },
     content: {
         flex: 1,
@@ -61,8 +61,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     text: {
-        fontSize: 18,
+        fontSize: 24,
         fontWeight: '600',
-        color: '#555',
+        fontFamily: 'Poppins-Regular',
+        color: '#222222',
     },
 });

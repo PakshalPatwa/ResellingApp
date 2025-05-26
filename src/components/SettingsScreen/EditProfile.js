@@ -13,40 +13,42 @@ const EditProfile = () => {
         Alert.alert("Profile Updated", "Your profile information has been successfully updated.");
     };
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backWrapper}>
-                    <Image source={Images.backarrow} style={styles.backIcon} />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Profile</Text>
+        <ScrollView>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backWrapper}>
+                        <Image source={Images.backarrow} style={styles.backIcon} />
+                    </TouchableOpacity>
+                    <Text style={styles.headerTitle}>Profile</Text>
+                </View>
+
+                <View style={styles.content}>
+                    <TouchableOpacity>
+                        <Image source={Images.Profile} style={styles.image} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Text style={styles.profiletitle}>Change Photo</Text>
+                    </TouchableOpacity>
+
+                    {/* Display/Edit Fields */}
+                    <TextInput
+                        style={styles.input}
+                        value={name}
+                        onChangeText={setName}
+                        placeholder="Full Name"
+                    />
+
+                    {/* Action Buttons */}
+                    <GradientButton
+                        title={"UPDATE PORFILE"}
+                        onPress={handleUpdateProfile}
+                        style={styles.buttonText}
+                    />
+
+                </View>
             </View>
-
-            <View style={styles.content}>
-                <TouchableOpacity>
-                    <Image source={Images.Profile} style={styles.image} />
-                </TouchableOpacity>
-
-                <TouchableOpacity>
-                    <Text style={styles.profiletitle}>Change Photo</Text>
-                </TouchableOpacity>
-
-                {/* Display/Edit Fields */}
-                <TextInput
-                    style={styles.input}
-                    value={name}
-                    onChangeText={setName}
-                    placeholder="Full Name"
-                />
-
-                {/* Action Buttons */}
-                <GradientButton
-                    title={"UPDATE PORFILE"}
-                    onPress={handleUpdateProfile}
-                    style={styles.buttonText}
-                />
-
-            </View>
-        </View>
+        </ScrollView>
     )
 }
 
@@ -70,19 +72,19 @@ const styles = StyleSheet.create({
         tintColor: '#FFFFFF'
     },
     headerTitle: {
-        fontSize: 16,
-        fontWeight: '600',
+        fontSize: 14,
+        fontFamily: 'Poppins-SemiBold',
         color: '#FFFFFF',
         marginLeft: 15,
     },
     profiletitle: {
-        fontSize: 16,
-        fontWeight: '600',
+        fontSize: 14,
+        fontFamily: 'Poppins-Bold',
         color: '#01AAEC',
         textDecorationLine: 'underline',
     },
     content: {
-        height: 630,
+        minHeight: 730,
         margin: 10,
         alignItems: 'center',
         borderRadius: 15,

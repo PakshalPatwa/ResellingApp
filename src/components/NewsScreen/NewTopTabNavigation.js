@@ -12,7 +12,7 @@ const NewTopTabNavigation = () => {
         <>
             <Tab.Navigator
                 screenOptions={{
-                    tabBarLabelStyle: { fontSize: 14, fontWeight: 'bold' },
+                    tabBarLabelStyle: { fontSize: 14, fontFamily:'Poppins-Bold'},
                     tabBarIndicatorStyle: { backgroundColor: 'black' },
                     tabBarStyle: { backgroundColor: '#fff' },
                 }}

@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import GradientButton from './Button/Button';
@@ -7,50 +7,64 @@ import images from "./Images/Images";
 
 const Login = () => {
     const navigation = useNavigation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleForgotPassword = () => {
-        console.log("Forgot Password clicked!");
-        navigation.navigate('ForgotPassword');
-    };
-
-    const handleSignUP = () => {
-        console.log("Sign Up clicked!");
-        navigation.navigate('SignUp');
-    };
-
-    const handleSkip = () => {
-        console.log("Skip clicked!");
+    const handleLogin = () => {
+        if (!email || !password) {
+            Alert.alert('Error', 'Both fields are required!');
+            return;
+        }
+        console.log('Login clicked!');
         navigation.navigate('BottomTabNavigation');
-    }
+    };
 
+    const handleNavigation = (screen) => {
+        navigation.navigate(screen);
+    };
+    const handleSkip = () => {
+        navigation.navigate('BottomTabNavigation');
+    };
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => handleSkip()}>
+            <TouchableOpacity>
                 <Image source={images.Logo1} style={styles.image} />
             </TouchableOpacity>
 
-            <View style={styles.inputView}>
-                <Text style={styles.text}>Welcome Back!</Text>
-                <Text style={styles.subtext}>Please sign in to continue</Text>
-            </View>
+            <Text style={styles.text}>Welcome Back!</Text>
+            <Text style={styles.subtext}>Please sign in to continue</Text>
 
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Email" style={styles.form} />
                 <Icon name="mail" size={20} color="#000000" style={styles.inputIcon} />
+                <TextInput
+                    placeholder="Email"
+                    style={styles.form}
+                    keyboardType="email-address"
+                    value={email}
+                    onChangeText={setEmail}
+                />
             </View>
 
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Password" secureTextEntry style={styles.form} />
                 <Icon name="key" size={20} color="#000000" style={styles.inputIcon} />
+                <TextInput
+                    placeholder="Password"
+                    secureTextEntry
+                    style={styles.form}
+                    value={password}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onChangeText={setPassword}
+                />
             </View>
 
             <View style={styles.linkContainer}>
-                <TouchableOpacity onPress={() => handleForgotPassword()}>
-                    <Text style={styles.link}>Forgot Password ?</Text>
+                <TouchableOpacity onPress={() => handleNavigation('ForgotPassword')}>
+                    <Text style={styles.link}>Forgot Password?</Text>
                 </TouchableOpacity>
             </View>
 
-            <GradientButton title={"Login"} onPress={() => handleSkip()} />
+            <GradientButton title="Login" onPress={handleLogin} />
 
             <View style={styles.dividerContainer}>
                 <View style={styles.divider} />
@@ -70,13 +84,12 @@ const Login = () => {
 
             <View style={styles.signupContainer}>
                 <Text style={styles.subtext1}>New to Reselling.de?</Text>
-                <TouchableOpacity onPress={handleSignUP}>
+                <TouchableOpacity onPress={() => handleNavigation('SignUp')}>
                     <Text style={styles.link}> Sign Up</Text>
                 </TouchableOpacity>
             </View>
-
             <View style={styles.SkipContainer}>
-                <TouchableOpacity onPress={() => handleSkip()}>
+                <TouchableOpacity onPress={handleSkip}>
                     <Text style={styles.Skip}>Skip</Text>
                 </TouchableOpacity>
             </View>
@@ -89,6 +102,7 @@ export default Login
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingHorizontal: 5,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
@@ -115,7 +129,6 @@ const styles = StyleSheet.create({
     signupContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 20,
     },
     subtext1: {
         fontWeight: '700',
@@ -125,29 +138,26 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     inputContainer: {
-        width: 366,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        borderWidth: 1,
+        borderRadius: 8,
+        backgroundColor: '#F2F3FA',
+        borderColor: '#ccc',
+        marginVertical: 5,
+        paddingHorizontal: 10,
+        height: 50
     },
     inputIcon: {
-        padding: 15,
-        position: 'absolute',
         color: "rgba(31, 61, 77, 0.6)"
     },
     form: {
-        width: '100%',
-        height: 50,
+        flex: 1,
         fontSize: 14,
         fontWeight: '700',
-        borderRadius: 8,
-        margin: 5,
-        borderWidth: 1,
-        paddingHorizontal: 10,
-        borderColor: '#ccc',
-        backgroundColor: '#F2F3FA',
+        paddingLeft: 10,
     },
-   
+
     buttonText: {
         color: '#fff',
         fontSize: 16,
@@ -174,42 +184,39 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         backgroundColor: '#E72819',
     },
-
     linkContainer: {
         width: '100%',
-        marginBottom: 25,
         alignItems: 'flex-end',
+        marginVertical: 10,
     },
     link: {
-        textAlign: 'right',
+        width: '100%',
+        alignItems: 'flex-end',
         fontSize: 13,
         fontWeight: '700',
         color: '#01AAEC',
         // marginVertical: 10
     },
-    SkipContainer: {
-        width: 350,
-        alignItems: 'flex-end',
-    },
-    Skip: {
-        fontSize: 14,
-        fontWeight: '700',
-        // marginVertical: 10,
-        textDecorationLine: 'underline',
-        color: "rgba(31, 61, 77, 0.8)"
-    },
+
     dividerContainer: {
         width: 366,
         flexDirection: "row",
         alignItems: "center",
-        // marginVertical: 10,
     },
     divider: {
         flex: 1,
         height: 1,
         backgroundColor: "rgba(31, 61, 77, 0.3)",
         marginHorizontal: 10
+    },
+    SkipContainer: {
+        width: '100%',
+        alignItems: 'flex-end',
+    },
+    Skip: {
+        fontSize: 14,
+        fontWeight: '700',
+        textDecorationLine: 'underline',
+        color: "rgba(31, 61, 77, 0.8)"
     }
 })
-
-

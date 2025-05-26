@@ -35,10 +35,12 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     logocontainer: {
-        width: 340,
-        justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
+        borderRadius: 25,
+        margin: 5,
+        paddingHorizontal: 15,
     },
     image: {
         width: 150,
@@ -63,9 +65,9 @@ const styles = StyleSheet.create({
     form: {
         width: 366,
         height: 48,
-        fontSize: 14,
+        fontSize: 12,
         // fontWeight: '700',
-        fontFamily:'Poppins-Bold',
+        fontFamily: 'Poppins-SemiBold',
         flex: 1,
     },
 })

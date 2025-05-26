@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import GradientButton from './Button/Button';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import images from "./Images/Images";
 
-const Login = () => {
+const ForgotPassword = () => {
+    const [email, setEmail] = useState('');
     const navigation = useNavigation();
 
     // const handleForgotPassword = () => {
@@ -34,10 +35,15 @@ const Login = () => {
             </View>
 
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Email" style={styles.form} />
+                <TextInput
+                    placeholder="Email"
+                    style={styles.form}
+                    keyboardType="email-address"
+                    value={email}
+                    onChangeText={setEmail}
+                />
                 <Icon name="mail" size={20} color="#000000" style={styles.inputIcon} />
             </View>
-
             <GradientButton title={"Reset password"} onPress={() => handleSignUP()}/>
 
             <View style={styles.signupContainer}>
@@ -50,11 +56,12 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ForgotPassword
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingHorizontal: 5,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
@@ -81,7 +88,6 @@ const styles = StyleSheet.create({
     signupContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 20,
     },
     subtext1: {
         fontWeight: '700',
@@ -91,44 +97,24 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     inputContainer: {
-        width: 366,
-        margin:20,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        borderWidth: 1,
+        borderRadius: 8,
+        backgroundColor: '#F2F3FA',
+        borderColor: '#ccc',
+        marginVertical: 5,
+        paddingHorizontal: 10,
+        height: 50
     },
     inputIcon: {
-        padding: 15,
-        position: 'absolute',
         color: "rgba(31, 61, 77, 0.6)"
     },
     form: {
-        width: 366,
-        height: 48,
+        flex: 1,
         fontSize: 14,
         fontWeight: '700',
-        borderRadius: 8,
-        margin: 5,
-        borderWidth: 1,
-        paddingHorizontal: 10,
-        borderColor: '#ccc',
-        backgroundColor: '#F2F3FA',
-    },
-    button: {
-        width: 366,
-        height: 48,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 8,
-        marginVertical: 5,
-        backgroundColor: '#1F3D4D',
-    },
-    appleButton: {
-        backgroundColor: '#000',
-    },
-    googleButton: {
-        backgroundColor: '#DB4437',
+        paddingLeft: 10,
     },
     gradientButton: {
         width: '100%',
