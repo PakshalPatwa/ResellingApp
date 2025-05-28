@@ -5,8 +5,9 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import { useNavigation } from '@react-navigation/native';
 import GradientButton from './Button/Button';
 import images from "./Images/Images";
+import LinearGradient from 'react-native-linear-gradient';
 
-const SignUp = ({ }) => {
+const SignUp = ({ colors = ['#2C398B', '#01AAEC'] }) => {
     const navigation = useNavigation();
 
     const [fdata, setFdata] = useState({
@@ -45,7 +46,7 @@ const SignUp = ({ }) => {
                 return;
             }
             else {
-                fetch('http://localhost:3001/signup', {
+                fetch('http://192.168.0.109:3002/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -64,11 +65,11 @@ const SignUp = ({ }) => {
                         }
                     }
                     )
-                    .catch((error) => {
-                        console.log(error)
-                        // seterrormsg("Something went wrong. Try again.");
-                        // setIsSubmitting(false);
-                    });
+                // .catch((error) => {
+                //     console.log(error)
+                //     seterrormsg("Something went wrong. Try again.");
+                //     // setIsSubmitting(false);
+                // });
             }
         }
     };
@@ -127,9 +128,17 @@ const SignUp = ({ }) => {
                 <Icon name="key" size={20} color="rgba(31, 61, 77, 0.6)" style={styles.inputIcon} />
             </View>
 
-            <TouchableOpacity style={styles.button}>
-                <GradientButton style={styles.button} title={"SignUp"} onPress={sendToBackend} />
+            <TouchableOpacity style={styles.button} onPress={sendToBackend}>
+                <LinearGradient
+                    colors={colors}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={styles.priceButton}
+                >
+                    <Text style={styles.priceText}>SignUp</Text>
+                </LinearGradient>
             </TouchableOpacity>
+
 
             <View style={styles.dividerContainer}>
                 <View style={styles.divider} />
@@ -229,6 +238,20 @@ const styles = StyleSheet.create({
         height: 1,
         backgroundColor: "rgba(31, 61, 77, 0.3)",
         marginHorizontal: 10
+    },
+    priceButton: {
+        width: '100%',
+        height: 50,
+        justifyContent: 'center',
+        textAlign: 'center',
+        borderRadius: 8,
+    },
+    priceText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: "center",
+        textTransform: 'uppercase'
     },
     button: {
         width: '100%',

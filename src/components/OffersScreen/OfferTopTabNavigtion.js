@@ -6,8 +6,8 @@ import AmazonScreen from './TopsTabs/AmazonScreen';
 import KDMScreen from './TopsTabs/KDMScreen';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import BrandScreen from './BrandScreen';
-import ShopsScreen from './ShopsScreen';
+// import BrandScreen from './BrandScreen';
+// import ShopsScreen from './ShopsScreen';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 

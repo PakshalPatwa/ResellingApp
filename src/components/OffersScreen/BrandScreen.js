@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Images from '../Images/Images';
@@ -8,6 +8,16 @@ import GradientButton from '../Button/Button';
 const BrandScreen = () => {
   const navigation = useNavigation();
   const [selectedBrands, setSelectedBrands] = useState([]);
+
+  const handleSubscribe = () => {
+    Alert.alert('Subscribe','Subscribe Successfully',
+      [
+        {
+          onPress: () => navigation.navigate('BottomTabNavigation'),
+        },
+      ],
+    );
+  };
 
   const brandImages = [
     Images.Brands1,
@@ -62,7 +72,11 @@ const BrandScreen = () => {
             </TouchableOpacity>
           ))}
         </View>
-        <GradientButton style={styles.buttonText} title={"Get Coupon"} />
+        <GradientButton
+          style={styles.buttonText}
+          title={"Subscribe"}
+          onPress={handleSubscribe}
+        />
       </ScrollView>
     </View>
   );
@@ -96,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#FFFFFF',
     marginLeft: 15,
-    fontFamily:'Poppins-SemiBold'
+    fontFamily: 'Poppins-SemiBold'
   },
   searchIcon: {
     marginRight: 5,
@@ -107,7 +121,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     color: '#1F3D4D',
-    fontFamily:'Poppins-Bold',
+    fontFamily: 'Poppins-Bold',
     paddingHorizontal: 20,
     marginBottom: 15,
   },

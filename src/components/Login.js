@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
-import GradientButton from './Button/Button';
+// import GradientButton from './Button/Button';
 import images from "./Images/Images";
+import LinearGradient from 'react-native-linear-gradient';
 
-const Login = () => {
+const Login = ({ colors = ['#2C398B', '#01AAEC'] }) => {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -64,7 +65,16 @@ const Login = () => {
                 </TouchableOpacity>
             </View>
 
-            <GradientButton title="Login" onPress={handleLogin} />
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <LinearGradient
+                    colors={colors}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={styles.priceButton}
+                >
+                    <Text style={styles.priceText}>Login</Text>
+                </LinearGradient>
+            </TouchableOpacity>
 
             <View style={styles.dividerContainer}>
                 <View style={styles.divider} />
@@ -157,7 +167,6 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         paddingLeft: 10,
     },
-
     buttonText: {
         color: '#fff',
         fontSize: 16,
@@ -197,7 +206,33 @@ const styles = StyleSheet.create({
         color: '#01AAEC',
         // marginVertical: 10
     },
+    button: {
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 8,
+        marginVertical: 5,
+        backgroundColor: '#1F3D4D',
+    },
+    priceButton: {
+        width: '100%',
+        height: 50,
+        // flexDirection: 'row',
+        justifyContent: 'center',
+        textAlign: 'center',
+        borderRadius: 8,
+        // marginVertical: 5,
+    },
 
+    priceText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: "center",
+        textTransform: 'uppercase'
+    },
     dividerContainer: {
         width: 366,
         flexDirection: "row",

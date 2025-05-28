@@ -8,8 +8,7 @@ import SignUp from './src/components/SignUp';
 import Notifications from './src/components/Notifications';
 import Newsletter from './src/components/NewsScreen/Newsletter';
 import ForgotPassword from './src/components/ForgotPassword';
-// import BottomTabNavigation from './src/components/Home/BottomTabNavigtion';
-import ManagePayment from './src/components/SettingsScreen/Tabs/ManagePayment';
+import Subscription from './src/components/SettingsScreen/Subscription';
 import InviteFriends from './src/components/SettingsScreen/Tabs/InviteFriends';
 import PrivacyPolicy from './src/components/SettingsScreen/Tabs/PrivacyPolicy';
 import AboutUs from './src/components/SettingsScreen/Tabs/AboutUs';
@@ -20,13 +19,14 @@ import EditProfile from './src/components/SettingsScreen/EditProfile'
 import Claimdetails from './src/components/Claimdetails';
 import BrandScreen from './src/components/OffersScreen/BrandScreen'
 import ShopsScreen from './src/components/OffersScreen/ShopsScreen'
+import ChooseBrands from './src/components/SettingsScreen/ChooseBrands';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName='BottomTabNavigation' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="BottomTabNavigation" component={Home} />
         <Stack.Screen name="Login" component={Login} />
@@ -37,7 +37,8 @@ function App() {
         <Stack.Screen name="ShopsScreen" component={ShopsScreen} />
         <Stack.Screen name="Newsletter" component={Newsletter} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="Manage Payment" component={ManagePayment} />
+        <Stack.Screen name="Manage Payment" component={Subscription} />
+        <Stack.Screen name="ChooseBrands" component={ChooseBrands} />
         <Stack.Screen name="Invite Friends" component={InviteFriends} />
         <Stack.Screen name="SettingNotifications" component={SettingNotifications} />
         <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />

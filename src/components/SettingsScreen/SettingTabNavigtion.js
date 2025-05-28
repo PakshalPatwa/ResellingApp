@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import ManagePayment from './Tabs/ManagePayment';
+import Subscription from './Subscription';
 import InviteFriends from './Tabs/InviteFriends';
 import Notifications from './Tabs/SettingNotifications';
 import PrivacyPolicy from './Tabs/PrivacyPolicy';
@@ -14,7 +14,7 @@ const SettingTabNavigtion = () => {
   const navigation = useNavigation();
 
   const tabs = [
-    { name: "Manage Payment", component: ManagePayment },
+    { name: "Manage Payment", component: Subscription },
     { name: "Invite Friends", component: InviteFriends },
     { name: "Notifications", component: Notifications },
     { name: "Privacy Policy", component: PrivacyPolicy },

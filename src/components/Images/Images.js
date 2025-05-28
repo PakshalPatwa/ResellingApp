@@ -18,7 +18,7 @@ export default {
     Profile :require('../../assets/Profile.png'),
     Rightside:require('../../assets/Rightside_arrow.png'),
     share:require('../../assets/share.png'),
-
+    Rigth:require('../../assets/Rigth.png'),
     // News bottompage
     News1: require('../../assets/News1.png'),
     News2: require('../../assets/News2.png'),
