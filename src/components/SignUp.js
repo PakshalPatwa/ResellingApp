@@ -34,19 +34,22 @@ const SignUp = ({ colors = ['#2C398B', '#01AAEC'] }) => {
 
     const sendToBackend = () => {
         console.log(fdata)
-        const { name, email, password, confirmpassword } = fdata;
+        // const { name, email, password, confirmpassword } = fdata;
 
-        if (!name || !email || !password || !confirmpassword) {
+        if (fdata.name == '' ||
+            fdata.email == '' ||
+            fdata.password == '' ||
+            fdata.confirmpassword == '') {
             seterrormsg("Please fill all the fields");
             return;
         }
         else {
             if (fdata.password != fdata.confirmpassword) {
-                seterrormsg("Passwords do not match");
+                seterrormsg('Password and Confirm Password must be same');
                 return;
             }
             else {
-                fetch('http://192.168.0.109:3002/signup', {
+                fetch('http://192.168.0.108:3000/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -55,21 +58,24 @@ const SignUp = ({ colors = ['#2C398B', '#01AAEC'] }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        
+                        // Token Created
+                        // console.log(data); 
+                        
                         if (data.error) {
                             seterrormsg(data.error);
                         } else {
-                            // Alert.alert('Success', 'Account created successfully');
+                            Alert.alert('Success','Account created successfully');
                             console.log('Account created successfully')
                             navigation.navigate('Login');
                         }
                     }
                     )
-                // .catch((error) => {
-                //     console.log(error)
-                //     seterrormsg("Something went wrong. Try again.");
-                //     // setIsSubmitting(false);
-                // });
+                    .catch((error) => {
+                        console.log(error)
+                        seterrormsg("Something went wrong. Try again.");
+                        setIsSubmitting(false);
+                    });
             }
         }
     };
@@ -80,7 +86,6 @@ const SignUp = ({ colors = ['#2C398B', '#01AAEC'] }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            {errormsg && <Text style={{ color: 'red', marginBottom: 10 }}>{errormsg}</Text>}
 
             <TouchableOpacity>
                 <Image source={images.Logo1} style={styles.image} />
@@ -88,6 +93,8 @@ const SignUp = ({ colors = ['#2C398B', '#01AAEC'] }) => {
 
             <Text style={styles.text}>Let’s Get Started!</Text>
             <Text style={styles.subtext}>Create an account to get full access</Text>
+
+            {errormsg && <Text style={{ fontSize: 15, color: 'red', backgroundColor: "#01AAEC", padding: 5, borderRadius: 10, width: "100%", textAlign: "center", }}>{errormsg}</Text>}
 
             <View style={styles.inputContainer}>
                 <TextInput

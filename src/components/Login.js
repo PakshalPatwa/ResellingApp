@@ -8,16 +8,56 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const Login = ({ colors = ['#2C398B', '#01AAEC'] }) => {
     const navigation = useNavigation();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [fdata, setfdata] = useState({
+        email: '',
+        password: '',
+    })
+    const [errormsg, seterrormsg] = useState(null);
+
+    const handleInputChange = (name, value) => {
+        setfdata((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+        seterrormsg(null);
+    };
 
     const handleLogin = () => {
-        if (!email || !password) {
+        //    console.log(fdata)
+        if (fdata.email == '' || fdata.password == '') {
             Alert.alert('Error', 'Both fields are required!');
+            // seterrormsg("Please fill all the fields");
             return;
         }
-        console.log('Login clicked!');
-        navigation.navigate('BottomTabNavigation');
+        else {
+            fetch('http://192.168.0.108:3000/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(fdata),
+            })
+                .then(res => res.json())
+                .then(data => {
+
+                    // Token Created
+                    // console.log(data);
+
+                    if (data.error) {
+                        seterrormsg(data.error);
+                    } else {
+                        Alert.alert('Success', 'Login successfully');
+                        console.log('Login clicked!');
+                        navigation.navigate('BottomTabNavigation');
+                    }
+                }
+                )
+                .catch((error) => {
+                    console.log(error)
+                    seterrormsg("Something went wrong. Try again.");
+                    setIsSubmitting(false);
+                });
+        }
     };
 
     const handleNavigation = (screen) => {
@@ -35,15 +75,16 @@ const Login = ({ colors = ['#2C398B', '#01AAEC'] }) => {
             <Text style={styles.text}>Welcome Back!</Text>
             <Text style={styles.subtext}>Please sign in to continue</Text>
 
+            {errormsg && <Text style={{ fontSize: 15, color: 'red', backgroundColor: "#01AAEC", padding: 5, borderRadius: 10, width: "100%", textAlign: "center", }}>{errormsg}</Text>}
+
             <View style={styles.inputContainer}>
                 <Icon name="mail" size={20} color="#000000" style={styles.inputIcon} />
                 <TextInput
                     placeholder="Email"
                     style={styles.form}
+                    value={fdata.email}
                     keyboardType="email-address"
-                    value={email}
-                    onChangeText={setEmail}
-                />
+                    onChangeText={(text) => handleInputChange('email', text)} />
             </View>
 
             <View style={styles.inputContainer}>
@@ -52,11 +93,8 @@ const Login = ({ colors = ['#2C398B', '#01AAEC'] }) => {
                     placeholder="Password"
                     secureTextEntry
                     style={styles.form}
-                    value={password}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    onChangeText={setPassword}
-                />
+                    value={fdata.password}
+                    onChangeText={(text) => handleInputChange('password', text)} />
             </View>
 
             <View style={styles.linkContainer}>
